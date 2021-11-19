@@ -124,6 +124,7 @@ const willBeAlive = (cell, state) => {
 const calculateNext = (state) => {
   console.log("Old game state: " + JSON.stringify(state));
   let newState = [];
+  newState.length = 0;
   // Get corners of current state
   let corner = corners(state);
   console.log("Old corners: " + corner.topRight + " " + corner.bottomLeft);
@@ -136,6 +137,7 @@ const calculateNext = (state) => {
   // Iterate over new grid
   for (let i = corner.bottomLeft[0]; i <= corner.topRight[0]; i++) {
     for (let j = corner.bottomLeft[1]; j <= corner.topRight[1]; j++) {
+      console.log("Check if " + [i,j] + " will be alive");
       if (willBeAlive([i,j], state)) {
         newState.push([i,j]);
       }
