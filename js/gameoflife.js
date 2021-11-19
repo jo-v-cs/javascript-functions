@@ -148,9 +148,24 @@ const calculateNext = (state) => {
   return newState;
 };
 
-const iterate = (state, iterations) => {};
+const iterate = (state, iterations) => {
+  let gameStates = [];
+  gameStates.push(state);
+  let nextState = state;
+  for (let i = 0; i < iterations; i++) {
+    nextState = calculateNext(nextState);
+    gameStates.push(nextState);
+  }
 
-const main = (pattern, iterations) => {};
+  return gameStates;
+};
+
+const main = (pattern, iterations) => {
+    let gameStates = iterate(pattern, iterations);
+    for (let i = 0; i < gameStates.length; i++) {
+      printCells(gameStates[i]);
+    }
+};
 
 const startPatterns = {
     rpentomino: [
